@@ -110,11 +110,16 @@
 
     function checkGit() {
         var getting = browser.storage.local.get(["gitlab_url", "gitlab_key", "project_name"], function(items) {
-            gitlabUrl = items.gitlab_url;
-            gitlabKey = items.gitlab_key;
-
             if (items.project_name) {
                 projectName = items.project_name;
+            }
+
+            if (items.gitlab_url) {
+                gitlabUrl = items.gitlab_url;
+            }
+
+            if (items.gitlab_key) {
+                gitlabKey = items.gitlab_key;
             }
 
             gitlabUrl = gitlabUrl.replace(/\/$/, "") + "/projects/" + projectName.replace("/", "%2F") + "/merge_requests?state=opened";
@@ -152,6 +157,17 @@
     }
 
 
-    checkGit();
+    function sendWelcomeNotification() {
+        var getting = browser.storage.local.get(["gitlab_url", "gitlab_key", "project_name"], function(items) {
+            if (!items.gitlab_url || !items.gitlab_key || !items.project_name) {
+                 sendNotification("Hello world!", { body: "Please configure the extension settings" });
+            } else {
+                checkGit();
+            }
+        });
+    }
+
+
+    sendWelcomeNotification();
     startCheckLoop();
 }());
