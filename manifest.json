@@ -1,0 +1,19 @@
+{
+    "name": "GitLab Notifications",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Notifies you with important events related to your GitLab projects.",
+    "homepage_url": "https://github.com/imagitama/gitlab-notifications",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "background": {
+        "scripts": ["js/main.js"]
+    },
+    "options_ui": {
+        "page": "views/settings.html"
+    },
+    "permissions": ["<all_urls>", "storage", "notifications"]
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <form>
+            <fieldset>
+            <label>GitLab API URL<input type="text" id="gitlab_url" size="50" ></label> (eg. http://gitlab.mywebsite.com/api/v3)<br />
+            <label>GitLab Private Key<input type="text" id="gitlab_key" size="50" ></label> (generate a key by going to Profile Settings -> Access Tokens)
+            </fieldset>
+            <fieldset>
+            <label>Poll Interval<input type="text" id="check_interval" size="10" ></label> (seconds)
+            </fieldset>
+            <fieldset>
+            <label>Project<input type="text" id="project_name" size="50" /><label> (eg. my-namespace/my-project)
+            <label>Notify On</label><br />
+            <label><input type="checkbox" id="notify_merge_requests" disabled checked /> Merge Requests</label>
+            </fieldset>
+            <br />
+            <button type="submit">Save</button> <em>Please reload the extension after each save</em>
+        </form>
+        <script src="../js/settings.js"></script>
+    </body>
+</html>
